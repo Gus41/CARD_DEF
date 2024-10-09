@@ -2,6 +2,7 @@ import { useState, useRef } from "react";
 import { toJpeg } from "html-to-image";
 import Card from "@/components/Card";
 import { useRouter } from "next/router";
+import News from "@/components/News";
 
 export default function Home() {
   const [imageSrc, setImageSrc] = useState<string | null>(null);
@@ -18,6 +19,12 @@ export default function Home() {
       setImageSrc(imageURL);
     }
   };
+
+  function setNews(title:string,description:string,image_path:string){
+    setDescription(description)
+    setTitle(title)
+    setImageSrc(image_path)
+  }
 
   const downloadCardAsImage = () => {
     if (cardRef.current === null) return;
@@ -89,6 +96,7 @@ export default function Home() {
       >
         Baixar card como imagem
       </button>
+      <News set={setNews} />
     </div>
   );
 }

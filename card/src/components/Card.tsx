@@ -13,7 +13,6 @@ export default function Card(props: cardProps) {
             <Image className="absolute top-0 right-0 z-10" src={'/topo.png'} width={46} height={60} alt="Element" />
         </div>
 
-
             <div className="bg-gray-300 relative flex items-center justify-center">
                 {props.imageSrc ? (
                     <Image
