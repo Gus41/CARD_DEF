@@ -8,9 +8,9 @@ export default function Home() {
   const [imageSrc, setImageSrc] = useState<string | null>(null);
   const [title, setTitle] = useState<string>('');
   const [description, setDescription] = useState<string>('');
+  const [showForm, setShowForm] = useState<boolean>(false); // Estado para controlar a visibilidade do formulário
   const cardRef = useRef<HTMLDivElement>(null);
-
-  const router = useRouter()
+  const router = useRouter();
 
   const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
@@ -20,20 +20,20 @@ export default function Home() {
     }
   };
 
-  function setNews(title:string,description:string,image_path:string){
-    setDescription(description)
-    setTitle(title)
-    setImageSrc(image_path)
+  function setNews(title: string, description: string, image_path: string) {
+    setDescription(description);
+    setTitle(title);
+    setImageSrc(image_path);
   }
 
   const downloadCardAsImage = () => {
     if (cardRef.current === null) return;
-  
-    toJpeg(cardRef.current, { pixelRatio: 2 }) 
+
+    toJpeg(cardRef.current, { pixelRatio: 2 })
       .then((dataUrl) => {
         const link = document.createElement('a');
         link.href = dataUrl;
-        link.download = 'card-image.jpeg'; 
+        link.download = 'card-image.jpeg';
         link.click();
       })
       .catch((err) => {
@@ -43,7 +43,10 @@ export default function Home() {
         router.reload();
       });
   };
-  
+
+  const toggleFormVisibility = () => {
+    setShowForm(!showForm); // Alterna a visibilidade do formulário
+  };
 
   return (
     <div className="h-screen w-screen flex flex-col justify-center items-center relative">
@@ -55,45 +58,52 @@ export default function Home() {
         />
       </div>
 
-      <div className="m-10">
-        <label htmlFor="title" className="block text-lg font-semibold mb-1">
-          Título
-        </label>
-        <input
-          type="text"
-          name="title"
-          id="title"
-          onChange={(e) => setTitle(e.target.value)}
-          className="block text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"
-        />
+      <button 
+        onClick={toggleFormVisibility} 
+        className={`mb-4 px-4 py-2 bg-gray-900 text-white rounded-lg hover:bg-blue-600 absolute ${showForm? 'top-52' : 'top-2'} left-6`}>
+        {showForm ? 'Esconder Formulário' : 'Mostrar Formulário'}
+      </button>
 
-        <label htmlFor="description" className="block text-lg font-semibold mb-1">
-          Descrição
-        </label>
-        <input
-          type="text"
-          name="description"
-          id="description"
-          onChange={(e) => setDescription(e.target.value)}
-          className="block text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"
-        />
+      {showForm && (
+        <div className="absolute top-0 left-6 bg-gray-900 p-2">
+          <label htmlFor="title" className="block text-lg font-semibold mb-1">
+            Título
+          </label>
+          <input
+            type="text"
+            name="title"
+            id="title"
+            onChange={(e) => setTitle(e.target.value)}
+            className="block text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"
+          />
 
-        <label htmlFor="imageUpload" className="block text-lg font-semibold mb-2">
-          Carregar imagem:
-        </label>
-        <input
-          id="imageUpload"
-          type="file"
-          accept="image/*"
-          onChange={handleImageUpload}
-          className="block text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"
-        />
-      </div>
+          <label htmlFor="description" className="block text-lg font-semibold mb-1">
+            Descrição
+          </label>
+          <input
+            type="text"
+            name="description"
+            id="description"
+            onChange={(e) => setDescription(e.target.value)}
+            className="block text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"
+          />
+
+          <label htmlFor="imageUpload" className="block text-lg font-semibold mb-2">
+            Carregar imagem:
+          </label>
+          <input
+            id="imageUpload"
+            type="file"
+            accept="image/*"
+            onChange={handleImageUpload}
+            className="block text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"
+          />
+        </div>
+      )}
 
       <button
         onClick={downloadCardAsImage}
-        className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
-      >
+        className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 mt-3">
         Baixar card como imagem
       </button>
       <News set={setNews} />
