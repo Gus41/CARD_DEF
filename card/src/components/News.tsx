@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
 interface newsProps {
-  set: (title: string, description: string, image_path: string) => void;
+  set: (title: string, description: string, image_path: string,link:string) => void;
 }
 
 interface Descricao {
@@ -15,6 +15,7 @@ interface NewsItem {
   title: string;
   descricao: Descricao;
   featured_image: Featured_image;
+  link:string
 }
 
 const NewsComponent = (props: newsProps) => {
@@ -40,10 +41,11 @@ const NewsComponent = (props: newsProps) => {
 
   function renderNews() {
     return news.map((n, i) => {
+      console.log(n)
       return (
         <p
           onClick={() => {
-            props.set(n.title, n.descricao.descricao, n.featured_image.guid);
+            props.set(n.title, n.descricao.descricao, n.featured_image.guid,n.link);
           }}
           className="bg-gray-800 m-2 p-2 rounded-lg cursor-pointer"
           key={i}

@@ -10,6 +10,7 @@ export default function Home() {
   const [description, setDescription] = useState<string>('');
   const [showForm, setShowForm] = useState<boolean>(false); // Estado para controlar a visibilidade do formulário
   const cardRef = useRef<HTMLDivElement>(null);
+  const [newsLink,setNewsLink] = useState<string | null>(null)
   const router = useRouter();
 
   const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -20,10 +21,11 @@ export default function Home() {
     }
   };
 
-  function setNews(title: string, description: string, image_path: string) {
+  function setNews(title: string, description: string, image_path: string,link:string) {
     setDescription(description);
     setTitle(title);
     setImageSrc(image_path);
+    setNewsLink(link)
   }
 
   const downloadCardAsImage = () => {
@@ -48,8 +50,30 @@ export default function Home() {
     setShowForm(!showForm); // Alterna a visibilidade do formulário
   };
 
+  const handleCopyLink = () => {
+    if (newsLink) {
+      navigator.clipboard.writeText(newsLink)
+        .then(() => {
+          alert('Link copiado com sucesso!');
+        })
+        .catch((err) => {
+          console.error('Erro ao copiar o link:', err);
+        });
+    }
+  };
+  
+
   return (
     <div className="h-screen w-screen flex flex-col justify-center items-center relative">
+      {newsLink?
+        <button 
+        onClick={handleCopyLink} 
+        className={` text-white rounded-lg hover:text-blue-600`}>
+        Copiar link da noticia
+      </button>
+      :
+      false
+      }
       <div ref={cardRef}>
         <Card
           title={title}
@@ -57,7 +81,7 @@ export default function Home() {
           imageSrc={imageSrc}
         />
       </div>
-
+      
       <button 
         onClick={toggleFormVisibility} 
         className={`mb-4 px-4 py-2 bg-gray-900 text-white rounded-lg hover:bg-blue-600 absolute ${showForm? 'top-52' : 'top-2'} left-6`}>
