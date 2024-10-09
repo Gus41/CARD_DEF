@@ -48,7 +48,6 @@ const NewsComponent = (props: newsProps) => {
         });
         
     } else {
-      console.error('API URL is undefined');
       setError('API URL is undefined');
       setLoading(false);
     }
