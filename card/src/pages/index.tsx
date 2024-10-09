@@ -8,7 +8,7 @@ export default function Home() {
   const [imageSrc, setImageSrc] = useState<string | null>(null);
   const [title, setTitle] = useState<string>('');
   const [description, setDescription] = useState<string>('');
-  const [showForm, setShowForm] = useState<boolean>(false); // Estado para controlar a visibilidade do formulário
+  const [showForm, setShowForm] = useState<boolean>(false);
   const cardRef = useRef<HTMLDivElement>(null);
   const [newsLink,setNewsLink] = useState<string | null>(null)
   const router = useRouter();
