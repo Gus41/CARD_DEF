@@ -1,8 +1,7 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 import { toJpeg } from "html-to-image";
 import Card from "@/components/Card";
 import { useRouter } from "next/router";
-import { useParams } from "next/navigation";
 
 export default function Home() {
   const [imageSrc, setImageSrc] = useState<string | null>(null);
