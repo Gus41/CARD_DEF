@@ -28,22 +28,22 @@ export default function Home() {
 
   const downloadCardAsImage = () => {
     if (cardRef.current === null) return;
-
-    toJpeg(cardRef.current)
+  
+    toJpeg(cardRef.current, { pixelRatio: 2 }) 
       .then((dataUrl) => {
         const link = document.createElement('a');
         link.href = dataUrl;
-        link.download = 'card-image.png';
+        link.download = 'card-image.jpeg'; 
         link.click();
       })
       .catch((err) => {
         console.error('Erro ao gerar imagem:', err);
-      }).then(()=>{
-        setImageSrc(null)
-        router.reload()
-      })
-   
+      }).then(() => {
+        setImageSrc(null);
+        router.reload();
+      });
   };
+  
 
   return (
     <div className="h-screen w-screen flex flex-col justify-center items-center relative">

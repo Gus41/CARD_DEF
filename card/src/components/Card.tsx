@@ -24,7 +24,6 @@ export default function Card(props: cardProps) {
                     />
                 ) : false
                 }
-                <h2 className="absolute bg-[#fa0100] right-2 bottom-4 p-2 text-basic text-[10px]">SAIBA MAIS</h2>
             </div>
 
             <div className="bg-[#0052ea] p-4">
