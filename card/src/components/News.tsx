@@ -32,8 +32,7 @@ const NewsComponent = (props: newsProps) => {
       fetch(apiUrl)
         .then((response) => {
           if (!response.ok) {
-            setError('Erro na conexão com a API');
-            return 
+            throw new Error('Network response was not ok');
           }
           return response.json();
         })
