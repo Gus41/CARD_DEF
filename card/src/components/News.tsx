@@ -24,7 +24,6 @@ const NewsComponent = (props : newsProps) => {
     fetch('https://sou.ucs.br/noticias/wp-json/posts')
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         setNews(data);
       })
       .catch((error) => {
