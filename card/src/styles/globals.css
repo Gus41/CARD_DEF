@@ -2,6 +2,36 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'HeroKid';
+  src: url('/fonts/herokid-boldexpanded.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'HeroKidReg';
+  src: url('/fonts/herokid-regular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'HeroKidTiny';
+  src: url('/fonts/herokid-light.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Agora você pode usar a fonte no seu projeto */
+body {
+  font-family: 'MinhaFonte', sans-serif;
+}
+
+h2{
+  font-family: 'HeroKid';
+}
+p{
+  font-family: 'HeroKidTiny';
+}
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -17,7 +47,6 @@
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
 }
 
 @layer utilities {
