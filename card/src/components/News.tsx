@@ -22,6 +22,7 @@ const NewsComponent = (props: newsProps) => {
 
   useEffect(() => {
     const apiUrl = process.env.NEXT_PUBLIC_NEWS_API_URL; 
+    console.log(apiUrl)
     if (apiUrl) {
       fetch(apiUrl)
         .then((response) => response.json())
