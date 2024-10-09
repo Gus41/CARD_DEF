@@ -4,10 +4,17 @@ interface newsProps{
     set: (title:string,description:string,image_path:string)=>void
 }
 
-
+interface Descricao{
+    descricao:string
+}
+interface Featured_image{
+    guid: string
+}
 interface NewsItem {
   id: number;
-  title: string;
+  title: string,
+  descricao:Descricao,
+  featured_image : Featured_image
 }
 
 const NewsComponent = (props : newsProps) => {
