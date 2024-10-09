@@ -89,7 +89,6 @@ export default function Home() {
       >
         Baixar card como imagem
       </button>
-      <p className="absolute bottom-2 text-[14px]">Em caso de erro talvez seja preciso dar f5 a cada download de imagem</p>
     </div>
   );
 }
