@@ -21,18 +21,21 @@ const NewsComponent = (props: newsProps) => {
   const [news, setNews] = useState<NewsItem[]>([]);
 
   useEffect(() => {
-    const apiUrl = process.env.NEXT_PUBLIC_NEWS_API_URL; 
-    console.log(apiUrl)
+    const apiUrl = process.env.NEXT_PUBLIC_NEWS_API_URL; // Acessando a variável de ambiente
+
     if (apiUrl) {
-      fetch(apiUrl)
+    fetch(apiUrl)
         .then((response) => response.json())
         .then((data) => {
-          setNews(data);
+        setNews(data);
         })
         .catch((error) => {
-          console.error('Error fetching news:', error);
+        console.error('Error fetching news:', error);
         });
+    } else {
+    console.error('API URL is undefined');
     }
+
   }, []);
 
   function renderNews() {
