@@ -15,7 +15,7 @@ interface NewsItem {
   title: string;
   descricao: Descricao;
   featured_image: Featured_image;
-  link:string
+  slug:string
 }
 
 const NewsComponent = (props: newsProps) => {
@@ -45,7 +45,7 @@ const NewsComponent = (props: newsProps) => {
       return (
         <p
           onClick={() => {
-            props.set(n.title, n.descricao.descricao, n.featured_image.guid,n.link);
+            props.set(n.title, n.descricao.descricao, n.featured_image.guid,'https://www.ucs.br/site/noticias/' + n.slug);
           }}
           className="bg-gray-800 m-2 p-2 rounded-lg cursor-pointer"
           key={i}
