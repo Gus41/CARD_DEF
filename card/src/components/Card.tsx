@@ -8,7 +8,7 @@ interface cardProps {
 export default function Card(props: cardProps) {
     return (
         <div className="flex flex-col max-w-[300px] shadow-lg overflow-hidden" id="card">
-            <div className="bg-[#0052ea] pt-4 pl-4 pb-4 pr-16 relative min-h-[125px]">
+            <div className="bg-[#0052ea] pt-4 pl-4 pb-4 pr-12 relative min-h-[125px]">
                 <h2 className="">{props.title}</h2>
                 <Image className="absolute top-0 right-0" src={'/topo.png'} width={46} height={60} alt="Element" />
             </div>
