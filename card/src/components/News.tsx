@@ -78,7 +78,7 @@ const NewsComponent = (props: newsProps) => {
 
   return (
     <div>
-      <div className="absolute right-0 top-0 w-64 h-[500px] overflow-y-scroll bg-black shadow-lg rounded-lg p-4">
+      <div className="absolute right-0 top-0 w-80 h-full overflow-y-scroll bg-black shadow-lg rounded-lg p-4">
         <h1 className="text-lg font-bold mb-4">Últimas notícias</h1>
         {loading ? (
           <p>Loading news...</p> 
@@ -88,7 +88,7 @@ const NewsComponent = (props: newsProps) => {
         )}
       </div>
       {error && (
-        <div className="text-white bg-red-700 p-1 max-w-56 text-center absolute right-3 rounded-lg top-[520px] cursor-pointer"
+        <div className="text-white bg-red-700 p-1 max-w-56 text-center absolute right-[350px] rounded-lg bottom-1 cursor-pointer"
           onClick={()=>setError(null)}
         >
           {error}

@@ -65,15 +65,6 @@ export default function Home() {
 
   return (
     <div className="h-screen w-screen flex flex-col justify-center items-center relative">
-      {newsLink?
-        <button 
-        onClick={handleCopyLink} 
-        className={` text-white rounded-lg hover:text-blue-600`}>
-        Copiar link da noticia
-      </button>
-      :
-      false
-      }
       <div ref={cardRef}>
         <Card
           title={title}
@@ -128,8 +119,17 @@ export default function Home() {
       <button
         onClick={downloadCardAsImage}
         className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 mt-3">
-        Baixar card como imagem
+        Fazer Dowload da Imagem
       </button>
+      {newsLink?
+        <button 
+        onClick={handleCopyLink} 
+        className={` text-white rounded-lg hover:text-black hover:bg-white transition-all border-white border-solid border p-2 mt-4`}>
+        Copiar link da noticia
+      </button>
+      :
+      false
+      }
       <News set={setNews} />
     </div>
   );
