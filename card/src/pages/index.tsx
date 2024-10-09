@@ -47,7 +47,7 @@ export default function Home() {
   };
 
   const toggleFormVisibility = () => {
-    setShowForm(!showForm); // Alterna a visibilidade do formulário
+    setShowForm(!showForm); 
   };
 
   const handleCopyLink = () => {
