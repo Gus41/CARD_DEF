@@ -8,10 +8,12 @@ interface cardProps {
 export default function Card(props: cardProps) {
     return (
         <div className="flex flex-col max-w-[340px] shadow-lg overflow-hidden" id="card">
-            <div className="bg-[#0052ea] pt-4 pl-4 pb-4 pr-4 relative min-h-[125px]">
-            <h2 className="relative z-20 text-white">{props.title}</h2>
-            <Image className="absolute top-0 right-0 " src={'/topo.png'} width={46} height={60} alt="Element" quality={100} />
-        </div>
+            <div className="bg-[#0052ea] relative min-h-[125px]">
+                <div className="flex items-center justify-center min-h-[128px] px-1 h-full flex-1">
+                    <h2 className="relative z-20 text-white">{props.title}</h2>
+                </div>
+                <Image className="absolute top-0 right-0 " src={'/topo.png'} width={46} height={60} alt="Element" quality={100} />
+            </div>
 
             <div className="bg-gray-300 relative flex items-center justify-center">
                 {props.imageSrc ? (
