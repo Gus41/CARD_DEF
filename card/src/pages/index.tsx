@@ -1,12 +1,16 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { toJpeg } from "html-to-image";
 import Card from "@/components/Card";
+import { useRouter } from "next/router";
+import { useParams } from "next/navigation";
 
 export default function Home() {
   const [imageSrc, setImageSrc] = useState<string | null>(null);
   const [title, setTitle] = useState<string>('');
   const [description, setDescription] = useState<string>('');
   const cardRef = useRef<HTMLDivElement>(null);
+
+  const router = useRouter()
 
   const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
@@ -28,11 +32,15 @@ export default function Home() {
       })
       .catch((err) => {
         console.error('Erro ao gerar imagem:', err);
-      });
+      }).then(()=>{
+        setImageSrc(null)
+        router.reload()
+      })
+   
   };
 
   return (
-    <div className="h-screen w-screen flex flex-col justify-center items-center">
+    <div className="h-screen w-screen flex flex-col justify-center items-center relative">
       <div ref={cardRef}>
         <Card
           title={title}
@@ -82,6 +90,7 @@ export default function Home() {
       >
         Baixar card como imagem
       </button>
+      <p className="absolute bottom-2 text-[14px]">Em caso de erro talvez seja preciso dar f5 a cada download de imagem</p>
     </div>
   );
 }
