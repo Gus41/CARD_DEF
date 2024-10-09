@@ -7,11 +7,12 @@ interface cardProps {
 
 export default function Card(props: cardProps) {
     return (
-        <div className="flex flex-col w-[540px] h-[540px] shadow-lg overflow-hidden" id="card">
-            <div className="bg-[#0052ea] pt-4 pl-4 pb-4 pr-12 relative min-h-[125px]">
-                <h2 className="">{props.title}</h2>
-                <Image className="absolute top-0 right-0" src={'/topo.png'} width={46} height={60} alt="Element" />
-            </div>
+        <div className="flex flex-col max-w-[340px] shadow-lg overflow-hidden" id="card">
+            <div className="bg-[#0052ea] pt-4 pl-4 pb-4 pr-4 relative min-h-[125px]">
+            <h2 className="relative z-20 text-white">{props.title}</h2>
+            <Image className="absolute top-0 right-0 z-10" src={'/topo.png'} width={46} height={60} alt="Element" />
+        </div>
+
 
             <div className="bg-gray-300 relative flex items-center justify-center">
                 {props.imageSrc ? (
@@ -19,8 +20,8 @@ export default function Card(props: cardProps) {
                         alt="User uploaded image"
                         src={props.imageSrc}
                         width={300}
-                        height={150}
-                        className="object-cover object-center w-full h-auto max-h-40"
+                        height={200}
+                        className="object-cover object-center w-full h-auto max-h-44"
                     />
                 ) : false
                 }
@@ -28,7 +29,7 @@ export default function Card(props: cardProps) {
             </div>
 
             <div className="bg-[#0052ea] p-4">
-                <p className="text-white">{props.description}</p>
+                <p className="text-white text-[14px] leading-5">{props.description}</p>
             </div>
 
             <div className="flex items-center justify-center p-2 bg-[#0034a4]">
