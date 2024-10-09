@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-import { toPng,toJpeg } from "html-to-image";
+import { toJpeg } from "html-to-image";
 import Card from "@/components/Card";
 
 export default function Home() {
