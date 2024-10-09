@@ -118,13 +118,13 @@ export default function Home() {
 
       <button
         onClick={downloadCardAsImage}
-        className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 mt-3">
+        className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 mt-3 duration-200">
         Fazer Dowload da Imagem
       </button>
       {newsLink?
         <button 
         onClick={handleCopyLink} 
-        className={` text-white rounded-lg hover:text-black hover:bg-white transition-all border-white border-solid border p-2 mt-4`}>
+        className={` text-white rounded-lg duration-500 hover:text-black hover:bg-white border-white border-solid border p-2 mt-4`}>
         Copiar link da noticia
       </button>
       :

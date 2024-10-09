@@ -67,7 +67,7 @@ const NewsComponent = (props: newsProps) => {
               showError("Notícia sem imagem cadastrada ou descrição.");
             }
           }}
-          className="bg-gray-800 m-2 p-2 rounded-lg cursor-pointer"
+          className="bg-gray-800 m-2 p-2 rounded-lg cursor-pointer hover:scale-105 duration-200"
           key={i}
         >
           {n.title}
