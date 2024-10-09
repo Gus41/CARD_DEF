@@ -39,12 +39,14 @@ const NewsComponent = (props: newsProps) => {
         .then((data) => {
           setNews(data);
           setLoading(false);
+          props.set(data[0].title,data[0].descricao.descricao,data[0].featured_image.guid, 'https://www.ucs.br/site/noticias/' + data[0].slug)
         })
         .catch((error) => {
           console.error('Error fetching news:', error);
           setError('Failed to fetch news. Please try again later.');
           setLoading(false);
         });
+        
     } else {
       console.error('API URL is undefined');
       setError('API URL is undefined');
