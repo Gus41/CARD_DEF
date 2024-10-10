@@ -21,7 +21,7 @@ export default function Home() {
     }
   };
 
-  function setNews(title: string, description: string, image_path: string,link:string) {
+  const setNews = (title: string, description: string, image_path: string,link:string)=> {
     setDescription(description);
     setTitle(title);
     setImageSrc(image_path);
