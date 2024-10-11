@@ -3,6 +3,7 @@ import { toJpeg } from "html-to-image";
 import Card from "@/components/Card";
 import { useRouter } from "next/router";
 import News from "@/components/News";
+import { toast, ToastContainer } from "react-toastify";
 
 export default function Home() {
   const [imageSrc, setImageSrc] = useState<string | null>(null);
@@ -54,7 +55,7 @@ export default function Home() {
     if (newsLink) {
       navigator.clipboard.writeText(newsLink)
         .then(() => {
-          alert('Link copiado com sucesso!');
+          toast.success("Link Copiado")
         })
         .catch((err) => {
           console.error('Erro ao copiar o link:', err);
@@ -65,6 +66,11 @@ export default function Home() {
 
   return (
     <div className="h-screen w-screen flex flex-col justify-center items-center relative">
+      <ToastContainer
+      position="top-center"
+      autoClose={3000}
+      hideProgressBar={true}
+      />
       <div ref={cardRef}>
         <Card
           title={title}

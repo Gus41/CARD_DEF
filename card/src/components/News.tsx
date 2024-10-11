@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 interface newsProps {
   set: (title: string, description: string, image_path: string, link: string) => void;
@@ -64,8 +66,9 @@ export default function NewsComponent(props: newsProps){
           onClick={() => {
             if (n.featured_image && n.descricao && n.descricao.descricao) {
               props.set(n.title, n.descricao.descricao, n.featured_image.guid, 'https://www.ucs.br/site/noticias/' + n.slug);
+              
             } else {
-              showError("Notícia sem imagem cadastrada ou descrição.");
+              toast.error("Notícia sem imagem cadastrada ou descrição.");
             }
           }}
           className="bg-gray-800 m-2 p-2 rounded-lg cursor-pointer hover:scale-105 duration-200"
@@ -88,16 +91,7 @@ export default function NewsComponent(props: newsProps){
           renderNews()
         )}
       </div>
-      {error && (
-        <div className="text-white bg-red-700 p-1 max-w-56 text-center absolute right-[350px] rounded-lg bottom-1 cursor-pointer"
-          onClick={()=>setError(null)}
-        >
-          {error}
-          <div className='relative bg-blue-800'>
-            <p className='absolute top-[-50px] left-2'>x</p>
-          </div>
-        </div>
-      )}
+
     </div>
   );
 };
