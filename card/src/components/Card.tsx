@@ -35,7 +35,7 @@ export default function Card(props: cardProps) {
             </div>
 
             <div className="flex items-center justify-center flex-col p-2 gap-2 bg-[#0034a4]">
-                <Image alt="logo" src={'/ucs.png'} width={70} height={70} quality={100} />
+                <Image alt="logo" src={'/ucs.png'} width={70} height={70} quality={100}  />
             </div>
         </div>
     );
