@@ -27,13 +27,14 @@ export default function Card(props: cardProps) {
                     />
                 ) : false
                 }
+                <p className="text-white text-[12px] bg-[#E00000] p-2 w-fit mx-auto absolute right-2 bottom-2">Saiba mais em ucs.br</p>
             </div>
 
             <div className="bg-[#0052ea] p-4">
                 <p className="text-white text-[14px] leading-5">{props.description}</p>
             </div>
 
-            <div className="flex items-center justify-center p-2 bg-[#0034a4]">
+            <div className="flex items-center justify-center flex-col p-2 gap-2 bg-[#0034a4]">
                 <Image alt="logo" src={'/ucs.png'} width={70} height={70} quality={100} />
             </div>
         </div>
