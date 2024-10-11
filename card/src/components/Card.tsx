@@ -10,7 +10,7 @@ export default function Card(props: cardProps) {
         <div className="flex flex-col max-w-[340px] shadow-lg overflow-hidden" id="card">
             <div className="bg-[#0052ea] relative min-h-[125px]">
                 <div className="flex items-center justify-center min-h-[128px] px-4 h-full flex-1">
-                    <h2 className="relative z-20 text-white">{props.title}</h2>
+                    <h2 className="relative z-20 text-white">{props.title.replace("<i>","").replace("</i>","")}</h2>
                 </div>
                 <Image className="absolute top-0 right-0 " src={'/topo.png'} width={46} height={60} alt="Element" quality={100} />
             </div>
