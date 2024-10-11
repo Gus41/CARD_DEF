@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 interface newsProps {
@@ -24,7 +24,6 @@ interface NewsItem {
 
 export default function NewsComponent(props: newsProps){
   const [news, setNews] = useState<NewsItem[]>([]);
-  const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
@@ -45,19 +44,15 @@ export default function NewsComponent(props: newsProps){
         })
         .catch((error) => {
           console.error('Error fetching news:', error);
-          setError('Failed to fetch news. Please try again later.');
+          toast.error('Failed to fetch news. Please try again later.');
           setLoading(false);
         });
         
     } else {
-      setError('API URL is undefined');
+      toast.error('API URL is undefined');
       setLoading(false);
     }
   }, []);
-
-  function showError(error: string) {
-    setError(error);
-  }
 
   function renderNews() {
     return news.map((n, i) => {
