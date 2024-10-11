@@ -20,7 +20,7 @@ interface NewsItem {
   slug: string;
 }
 
-function NewsComponent(props: newsProps){
+export default function NewsComponent(props: newsProps){
   const [news, setNews] = useState<NewsItem[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
@@ -71,7 +71,7 @@ function NewsComponent(props: newsProps){
           className="bg-gray-800 m-2 p-2 rounded-lg cursor-pointer hover:scale-105 duration-200"
           key={i}
         >
-          {n.title}
+          {n.title.replace("<i>","").replace("</i>","")}
         </p>
       );
     });
@@ -102,4 +102,3 @@ function NewsComponent(props: newsProps){
   );
 };
 
-export default NewsComponent;
