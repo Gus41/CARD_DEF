@@ -20,7 +20,7 @@ interface NewsItem {
   slug: string;
 }
 
-const NewsComponent = (props: newsProps) => {
+function NewsComponent(props: newsProps){
   const [news, setNews] = useState<NewsItem[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
