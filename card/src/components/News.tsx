@@ -22,7 +22,7 @@ interface NewsItem {
   slug: string;
 }
 
-export default function NewsComponent(props: newsProps){
+export default function NewsComponent(props: newsProps) {
   const [news, setNews] = useState<NewsItem[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
 
@@ -40,14 +40,14 @@ export default function NewsComponent(props: newsProps){
         .then((data) => {
           setNews(data);
           setLoading(false);
-          props.set(data[0].title,data[0].descricao.descricao,data[0].featured_image.guid, 'https://www.ucs.br/site/noticias/' + data[0].slug)
+          props.set(data[0].title, data[0].descricao.descricao, data[0].featured_image.guid, 'https://www.ucs.br/site/noticias/' + data[0].slug)
         })
         .catch((error) => {
           console.error('Error fetching news:', error);
           toast.error('Failed to fetch news. Please try again later.');
           setLoading(false);
         });
-        
+
     } else {
       toast.error('API URL is undefined');
       setLoading(false);
@@ -61,33 +61,33 @@ export default function NewsComponent(props: newsProps){
           onClick={() => {
             if (n.featured_image && n.descricao && n.descricao.descricao) {
               props.set(n.title, n.descricao.descricao, n.featured_image.guid, 'https://www.ucs.br/site/noticias/' + n.slug);
-              
             } else {
               toast.error("Notícia sem imagem cadastrada ou descrição.");
             }
           }}
-          className="bg-gray-800 m-2 p-2 rounded-lg cursor-pointer hover:scale-105 duration-200"
+          className="bg-gray-800 m-2 p-2 max-h-40 rounded-lg cursor-pointer hover:scale-105 duration-200 "
           key={i}
         >
-          {n.title.replace("<i>","").replace("</i>","")}
+          {n.title.replace("<i>", "").replace("</i>", "")}
         </p>
+
       );
     });
   }
 
   return (
-    <div>
-      <div className="absolute right-0 top-0 w-80 h-full overflow-y-scroll bg-black shadow-lg rounded-lg p-4">
-        <h1 className="text-lg font-bold mb-4">Últimas notícias</h1>
-        {loading ? (
-          <p>Loading news...</p> 
-        )
-        : (
-          renderNews()
-        )}
-      </div>
-
+<div className="absolute sm:right-0 bottom-0 sm:top-0 sm:w-80 w-full h-44 sm:h-full overflow-y-scroll bg-black shadow-lg rounded-lg p-4 z-20">
+  <h1 className="text-lg font-bold mb-1 sm:mb-4">Últimas notícias</h1>
+  {loading ? (
+    <p>Loading news...</p> 
+  )
+  : (
+    <div className="flex flex-col sm:flex-col">
+      {renderNews()}
     </div>
+  )}
+</div>
+
   );
 };
 
