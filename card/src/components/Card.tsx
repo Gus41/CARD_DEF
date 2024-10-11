@@ -27,11 +27,11 @@ export default function Card(props: cardProps) {
                     />
                 ) : false
                 }
-                <p className="text-white text-[12px] bg-[#E00000] p-2 w-fit mx-auto absolute right-2 bottom-2">Saiba mais em ucs.br</p>
             </div>
 
-            <div className="bg-[#0052ea] p-4">
-                <p className="text-white text-[14px] leading-5">{props.description}</p>
+            <div className="bg-[#0052ea] flex flex-col">
+                <p className="text-white text-[14px] leading-5 m-4">{props.description}</p>
+                <p className="text-white text-[12px] bg-[#E00000] p-1 text-center w-full mx-auto ">Saiba mais em <b>ucs.br</b></p>
             </div>
 
             <div className="flex items-center justify-center flex-col p-2 gap-2 bg-[#0034a4]">

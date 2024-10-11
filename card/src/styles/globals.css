@@ -9,6 +9,12 @@
   font-style: normal;
 }
 @font-face {
+  font-family: 'HeroKidExtraBold';
+  src: url('/fonts/herokid-extrabold.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
   font-family: 'HeroKidReg';
   src: url('/fonts/herokid-regular.otf') format('opentype');
   font-weight: normal;
@@ -37,3 +43,4 @@ body {
   color: white;
   background: #0a0a0a;
 }
+
